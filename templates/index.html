@@ -61,6 +61,7 @@
           success: function(data) {
               var loc =  data['location']
               var place_ids = data['place_id']
+              var address_list = data['address_list']
               var infoWindow = new google.maps.InfoWindow();
               for(var i in loc){
                   locations.push(loc[i]);
@@ -122,6 +123,7 @@
         '<center><p><b>Review </b></p>' + rating['review']+'</center></td>' + '<td>'+'<center><p><b>Rating </b></p>' + rating['rating'] + '</center></td></tr></table>'
         +'</div>'+
         '</div>'+'<br><center><a href="/user" class="btn btn-info" role="button">Link Button</a></center>';
+
                         infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     }
