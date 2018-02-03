@@ -1,6 +1,12 @@
+
 <!DOCTYPE html>
 <html>
   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
        #map {
         height: 400px;
@@ -81,7 +87,7 @@
       '<h1 id="firstHeading" class="firstHeading">Swachh Public Toilet</h1>'+
       '<div id="bodyContent">'+
       '<p><b>Rating : </b></p>' + rating['rating'] + '<p><b>Review : </b></p>' + rating['review']
-      +'</div>'+
+      +'</div>'+'<button>Submit</button>'+
       '</div>';
                         console.log(data);
                         infoWindow.setContent(content);
@@ -111,11 +117,11 @@
                         var content = '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<h1 id="firstHeading" class="firstHeading">Swachh Public Toilet</h1>'+
-        '<div id="bodyContent">'+
-        '<p><b>Rating : </b></p>' + rating['rating'] + '<p><b>Review : </b></p>' + rating['review']
+        '<h3 id="firstHeading" class="firstHeading">Swachh Public Toilet</h3>'+
+        '<div id="bodyContent">'+'<table><tr><td>'+
+        '<center><p><b>Review </b></p>' + rating['review']+'</center></td>' + '<td>'+'<center><p><b>Rating </b></p>' + rating['rating'] + '</center></td></tr></table>'
         +'</div>'+
-        '</div>';
+        '</div>'+'<br><center><a href="/user" class="btn btn-info" role="button">Link Button</a></center>';
                         infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     }
