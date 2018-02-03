@@ -79,6 +79,7 @@ class MapResource(ModelResource):
                 # print result
                 locations = []
                 place_ids = []
+                address_list = []
                 custom_reviews = ["Clean and Tidy", "Dirty and Unhygienic", "Water supply is irregular",
                                   "Noisy Environment", "Incomplete Construction", "Entire place smells bad",
                                   "Ideal for everyone", "Not suitable for women", "Excessive Charge",
@@ -102,12 +103,14 @@ class MapResource(ModelResource):
                         review_query.save()
                     locations.append(location)
                     place_ids.append(place_id)
+                    address_list.append(address)
                     # print location
                 # print locations
                 return self.create_response(request, {
                     'status': "success",
                     'location': locations,
-                    'place_id': place_ids
+                    'place_id': place_ids,
+                    'address_list': address_list
                 })
 
     def find_route(self, request, *args, **kwargs):

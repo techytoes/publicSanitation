@@ -55,6 +55,7 @@
           success: function(data) {
               var loc =  data['location']
               var place_ids = data['place_id']
+              var address_list = data['address_list']
               var infoWindow = new google.maps.InfoWindow();
               for(var i in loc){
                   locations.push(loc[i]);
@@ -67,14 +68,15 @@
                   });
                   google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
+                var address = address_list[i]
                 data = {'place_id':place_ids[i]}
                 $.ajax({
                     type: 'POST',
                     url: '/api/user/get_review/',
                     data: JSON.stringify(data),
-                    success: function(data) {
-                        console.log(data);
-                        infoWindow.setContent(JSON.stringify(data));
+                    success: function(received_data) {
+                        console.log(received_data);
+                        infoWindow.setContent(JSON.stringify(received_data));
                         infoWindow.open(map, marker);
                     }
                 });
