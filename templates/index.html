@@ -109,14 +109,15 @@
                     success: function(data) {
                       var rating = data['data'];
                         console.log(data);
-                        var content = '<div id="content">'+
-        '<div id="siteNotice">'+
-        '</div>'+
-        '<h1 id="firstHeading" class="firstHeading">Swachh Public Toilet</h1>'+
-        '<div id="bodyContent">'+
-        '<p><b>Rating : </b></p>' + rating['rating'] + '<p><b>Review : </b></p>' + rating['review']
-        +'</div>'+
-        '</div>';
+                       var content = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h3 id="firstHeading" class="firstHeading">Swachh Public Toilet</h3>'
+                          +'</div>'+'<p><b>Address : </b></p>' + address_list[i]+
+                        '<div id="bodyContent">'+
+                        '<p><b>Review : </b></p>' + rating['review'] + '<p><b>Rating : </b></p>' + rating['rating']
+                        '</div>';
+                        console.log(data);
                         infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     }
