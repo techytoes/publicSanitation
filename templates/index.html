@@ -55,7 +55,6 @@
           success: function(data) {
               var loc =  data['location']
               var place_ids = data['place_id']
-              var address_list = data['address_list']
               var infoWindow = new google.maps.InfoWindow();
               for(var i in loc){
                   locations.push(loc[i]);
@@ -68,15 +67,24 @@
                   });
                   google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                var address = address_list[i]
-                data = {'place_id':place_ids[i]}
+                send_data = {'place_id':place_ids[i]}
                 $.ajax({
                     type: 'POST',
                     url: '/api/user/get_review/',
-                    data: JSON.stringify(data),
-                    success: function(received_data) {
-                        console.log(received_data);
-                        infoWindow.setContent(JSON.stringify(received_data));
+                    data: JSON.stringify(send_data),
+                    success: function(data) {
+                      var rating = data['data'];
+                      console.log(rating);
+                      var content = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Swachh Public Toilet</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Rating : </b></p>' + rating['rating'] + '<p><b>Review : </b></p>' + rating['review']
+      +'</div>'+
+      '</div>';
+                        console.log(data);
+                        infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     }
                 });
@@ -98,8 +106,17 @@
                     url: '/api/user/get_review/',
                     data: JSON.stringify(data),
                     success: function(data) {
+                      var rating = data['data'];
                         console.log(data);
-                        infoWindow.setContent(JSON.stringify(data));
+                        var content = '<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+        '<h1 id="firstHeading" class="firstHeading">Swachh Public Toilet</h1>'+
+        '<div id="bodyContent">'+
+        '<p><b>Rating : </b></p>' + rating['rating'] + '<p><b>Review : </b></p>' + rating['review']
+        +'</div>'+
+        '</div>';
+                        infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     }
                 });
