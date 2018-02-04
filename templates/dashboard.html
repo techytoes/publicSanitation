@@ -53,11 +53,13 @@
     <br>
     <br>
     <br>
-        {% for re in reviews %}
-          <p>{{ re }}</p>
-        {% endfor %}
-        {% for re in ratings %}
-          <p>{{ re }}</p>
+        {% for ra, re in ratings_and_reviews %}
+          <table>
+              <tr>
+                  <td>{{ re }}</td>
+          <td>{{ ra }}</td>
+              </tr>
+          </table>
         {% endfor %}
 
 
