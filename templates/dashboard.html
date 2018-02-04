@@ -82,10 +82,9 @@
           type: 'GET',
           url: '/api/user/rating/',
           success: function (data) {
-              //console.log(data);
-              var counter = data['data']
-              for (var key in counter){
-                array.push(counter[key])
+              //console.log(data)
+              for (var key in data){
+                array.push(data[key])
               }
           }
       });
