@@ -15,6 +15,9 @@
     </style>
   </head>
   <body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <b>Rating: <span id=stars></span></b>
     <p id="mapping"></p>
     <script>
     var x = document.getElementById("mapping");
@@ -24,6 +27,26 @@
       zoom: 14,
       center: uluru
     });
+  }
+  </script>
+  <script>
+  function getStars(rating) {
+
+    // Round to nearest half
+    rating = Math.round(rating * 2) / 2;
+    let output = [];
+
+    // Append all the filled whole stars
+    for (var i = rating; i >= 1; i--)
+      output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+    // If there is a half a star, append it
+    if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+    // Fill the empty stars
+    for (let i = (5 - rating); i >= 1; i--)
+      output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+    return output.join('');
   }
   </script>
   <p>Find Your Nearest Toilet.</p>
@@ -85,11 +108,11 @@
                       var content = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Swachh Public Toilet</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Rating : </b></p>' + rating['rating'] + '<p><b>Review : </b></p>' + rating['review']
-      +'</div>'+'<button>Submit</button>'+
-      '</div>';
+      '<h3 id="firstHeading" class="firstHeading">Swachh Public Toilet</h3>'+ '<div id="bodyContent">' + '<p><b>Address </p></b>' + address_list[i] + '</div>'+
+      '<div id="bodyContent">'+ '<br>' + '<table><tr><td>'+
+      '<center><p><b>Review </b></p>' + rating['review'] + '<center></td>' + '<td>' + '<center><p><b>Rating </b></p>' + getStars(rating['rating']) + '</center></td></tr></table>'
+      +'</div>'+
+      '</div>'+'<br><center><a href="/user" class="btn btn-info" role="button">Link Button</a></center>';
                         console.log(data);
                         infoWindow.setContent(content);
                         infoWindow.open(map, marker);
@@ -118,9 +141,9 @@
                         var content = '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<h3 id="firstHeading" class="firstHeading">Swachh Public Toilet</h3>'+
-        '<div id="bodyContent">'+'<table><tr><td>'+
-        '<center><p><b>Review </b></p>' + rating['review']+'</center></td>' + '<td>'+'<center><p><b>Rating </b></p>' + rating['rating'] + '</center></td></tr></table>'
+        '<h3 id="firstHeading" class="firstHeading">Swachh Public Toilet</h3>'+ '<p><b>Address </p></b>' + address_list[i] + '</div>'+
+        '<div id="bodyContent">'+'<br>'+'<table><tr><td>'+
+        '<center><p><b>Review </b></p>' + rating['review']+'</center></td>' + '<td>'+'<center><p><b>Rating </b></p>' + getStars(rating['rating']) + '</center></td></tr></table>'
         +'</div>'+
         '</div>'+'<br><center><a href="/user" class="btn btn-info" role="button">Link Button</a></center>';
 
