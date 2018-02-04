@@ -18,7 +18,7 @@ body {
   margin: 0;
 }
 .header {
-    background-color: #f1f1f1;
+    background-color: #201B1A;
     padding: 20px;
     text-align: center;
 }
@@ -29,7 +29,7 @@ body {
     <b><span id=stars></span></b>
     <div style="width:100%;">
     <div class="header">
-  <h1>Swachh Public Toilet Locator</h1>
+        <h1><font color="#fffffff">Swachh Public Toilet Locator</font></h1>
 </div>
    <p id="mapping"></p>
     <script>
@@ -42,13 +42,13 @@ body {
     });
   }
   </script>
-  <div style="float:left; width:80%;background: #d5d7dd;">
+  <div style="float:left; width:80%;"><br><br><br>
     <div id="map"></div>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiixzz0CeP42DEUZOCY9abZVk8kbIB6Bo&callback=initMap">
   </script>
 </div>
-  <div style="float:right; width:20%;background: #d5d7dd;">
+  <div style="float:right; width:20%;">
 <center><br><br><br><button onclick="getLocation()">Get Your Location</button><center>
 </div>
 </div>
