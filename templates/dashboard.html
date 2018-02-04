@@ -41,6 +41,7 @@
     .sidenav a {font-size: 18px;}
   }
   </style>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
 
@@ -54,23 +55,31 @@
   <div class="main">
     <h2>DashBoard</h2>
     <p>This Dashboard represents various stats related to Public Toilet Sanitation.</p>
-  </div>
-
-    <div class="container">
+      <div class="container">
     <br>
     <br>
     <br>
+        <div class="center">
         {% for ra, re in ratings_and_reviews %}
           <table>
-              <tr>
-                  <td>{{ re }}</td>
-          <td>{{ ra }}</td>
+                 <p> <td>{{ re }}</td></p>
+              <p><td>{{ ra }}</td></p>
               </tr>
           </table>
         {% endfor %}
-
-
-    </div><!-- /.container -->
+    </div>
+  </div>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+      $.ajax({
+          type: 'GET',
+          url: '/api/user/rating/',
+          success: function (data) {
+              console.log(data);
+          }
+      });
+  </script>
+    </div>
 
 
     <!-- Bootstrap core JavaScript

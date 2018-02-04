@@ -27,7 +27,7 @@ def dashboard(request):
     for obj in reviews:
         rating_and_review = [obj.rating, obj.review]
         ratings_and_reviews.append(rating_and_review)
-    context = {'ratings_and_reviews':ratings_and_reviews}
+    context = {'ratings_and_reviews': ratings_and_reviews}
     return render(request, template_name, context)
 
 
