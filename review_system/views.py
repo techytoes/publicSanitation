@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from models import Reviews
+from models import Map
 
 # Create your views here.
 
@@ -28,4 +29,15 @@ def dashboard(request):
         user_rating.append(obj.rating)
         user_review.append(obj.review)
     context = {'reviews': user_review, 'ratings': user_rating}
+    return render(request, template_name, context)
+
+
+def place(request):
+    place_id = 'ChIJBX5nLYjeKDoRjsQTS6jzeho'
+    template_name = 'place.html'
+    context = {}
+    review_query = Map.objects.get(place_id=place_id)
+    context['rating'] = review_query.rating
+    context['review'] = review_query.review
+    context['address'] = review_query.address
     return render(request, template_name, context)
