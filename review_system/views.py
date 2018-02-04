@@ -22,7 +22,7 @@ def user_inputs(request):
 
 def dashboard(request):
     template_name = 'dashboard.html'
-    reviews = Reviews.objects.all()
+    reviews = Reviews.objects.all().order_by('time').reverse()
     address_and_reviews = []
     for obj in reviews:
         address_and_review = [obj.address, obj.review]
