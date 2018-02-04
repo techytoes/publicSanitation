@@ -59,6 +59,12 @@
     <br>
     <br>
     <br>
+       <div class="container">
+      <div class="col-md-6">
+        <canvas id="pie-chart" width="800" height="450"></canvas>
+      </div>
+    </div>
+  </div>
         <div class="center">
         {% for ra, re in ratings_and_reviews %}
           <table>
@@ -68,8 +74,8 @@
           </table>
         {% endfor %}
     </div>
-  </div>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
   <script>
       var array = [];
       $.ajax({
