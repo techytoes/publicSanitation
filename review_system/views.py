@@ -23,11 +23,11 @@ def user_inputs(request):
 def dashboard(request):
     template_name = 'dashboard.html'
     reviews = Reviews.objects.all()
-    ratings_and_reviews = []
+    address_and_reviews = []
     for obj in reviews:
-        rating_and_review = [obj.rating, obj.review]
-        ratings_and_reviews.append(rating_and_review)
-    context = {'ratings_and_reviews': ratings_and_reviews}
+        address_and_review = [obj.address, obj.review]
+        address_and_reviews.append(address_and_review)
+    context = {'address_and_reviews': address_and_reviews}
     return render(request, template_name, context)
 
 

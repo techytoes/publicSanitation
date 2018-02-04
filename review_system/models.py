@@ -20,6 +20,7 @@ class Map(models.Model):
 
 class Reviews(models.Model):
     place_id = models.ForeignKey(Map, null=True)
+    address = models.TextField(max_length=200, null=True)
     review = models.TextField(max_length=1000, null=True)
     rating = models.FloatField(default=0.0)
     user_locations = models.TextField(max_length=200, null=True)

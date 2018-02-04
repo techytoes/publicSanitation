@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,13 +11,27 @@
         height: 400px;
         width: 100%;
        }
+       * {
+    box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
     </style>
   </head>
   <body>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-    <b>Rating: <span id=stars></span></b>
-    <p id="mapping"></p>
+    <b><span id=stars></span></b>
+    <div style="width:100%;">
+    <div class="header">
+  <h1>Swachh Public Toilet Locator</h1>
+</div>
+   <p id="mapping"></p>
     <script>
     var x = document.getElementById("mapping");
     function initMap() {
@@ -29,41 +42,41 @@
     });
   }
   </script>
+  <div style="float:left; width:80%;background: #d5d7dd;">
+    <div id="map"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiixzz0CeP42DEUZOCY9abZVk8kbIB6Bo&callback=initMap">
+  </script>
+</div>
+  <div style="float:right; width:20%;background: #d5d7dd;">
+<center><br><br><br><button onclick="getLocation()">Get Your Location</button><center>
+</div>
+</div>
+<p id="demo"></p>
   <script>
   function getStars(rating) {
-
     // Round to nearest half
     rating = Math.round(rating * 2) / 2;
     let output = [];
-
     // Append all the filled whole stars
     for (var i = rating; i >= 1; i--)
       output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
-
     // If there is a half a star, append it
     if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
-
     // Fill the empty stars
     for (let i = (5 - rating); i >= 1; i--)
       output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
     return output.join('');
   }
   </script>
-  <p>Find Your Nearest Toilet.</p>
-
-  <button onclick="getLocation()">Get Your Location</button>
-  <p id="demo"></p>
-
   <script>
   var x = document.getElementById("demo");
-
   function getLocation() {
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(initMap);
       } else {
           x.innerHTML = "Geolocation is not supported by this browser.";
       }
-
       var locations = new Array();
     function initMap(position) {
       var uluru = {lat: position.coords.latitude, lng: position.coords.longitude};
@@ -76,7 +89,6 @@
               icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
               map: map
           });
-
       $.ajax({
           type: 'POST',
           url: '/api/map/route/',
@@ -146,7 +158,6 @@
         '<center><p><b>Review </b></p>' + rating['review']+'</center></td>' + '<td>'+'<center><p><b>Rating </b></p>' + getStars(rating['rating']) + '</center></td></tr></table>'
         +'</div>'+
         '</div>'+'<br><center><a href="/user" class="btn btn-info" role="button">Link Button</a></center>';
-
                         infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     }
@@ -164,10 +175,5 @@
   }
   </script>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiixzz0CeP42DEUZOCY9abZVk8kbIB6Bo&callback=initMap">
-  </script>
   </body>
 </html>
