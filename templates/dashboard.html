@@ -59,10 +59,10 @@
     <br>
     <br>
     <br>
-      <div class="container">
-        <div class="col-md-6">
-          <canvas id="pie-chart" width="800" height="450"></canvas>
-        </div>
+      <div class="container row">
+          <div class="col-md-6">
+            <canvas id="pie-chart" width="800" height="450"></canvas>
+          </div>
         <div class="col-md-6">
           <center><h2>Recent reviews</h2></center>
           <div class="list-group">
@@ -73,6 +73,9 @@
             </div>
             {% endfor %}
           </div>
+        </div>
+        <div class="col-md-6">
+          <canvas id="line-chart" width="800" height="450"></canvas>
         </div>
       </div>
   </div>
@@ -108,6 +111,23 @@
       }
     }
     });
+      new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: ["00:00-03:00","03:00-06:00","06:00-09:00","09:00-12:00","12:00-15:00","15:00-18:00","18:00-21:00","21:00-24:00"],
+    datasets: [{ 
+        data: [45,114,221,106,67,150,121,91],
+        label: "Time-Wise Usage Statistics",
+        borderColor: "#3e95cd",
+        fill: false
+      }]
+    },options: {
+    title: {
+      display: true,
+      text: 'World population per region (in millions)'
+    }
+  }
+});
   </script>
     </div>
 
