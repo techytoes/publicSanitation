@@ -56,9 +56,7 @@ class MapResource(ModelResource):
                 counter["4"] = counter["4"] + 1
             if i.rating <= 5 and i.rating >=4:
                 counter["5"] = counter["5"] + 1
-        return self.create_response(request, {
-            'data': counter
-        })
+        return self.create_response(request, counter)
 
     def get_user_review(self, request, *args, **kwargs):
         if request:
