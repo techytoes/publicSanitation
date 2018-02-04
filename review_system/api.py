@@ -115,6 +115,7 @@ class MapResource(ModelResource):
                         map_query = Map.objects.create(place_id=place_id, address=address, location=location)
                         map_query.save()
                         review_query = Reviews.objects.create(place_id=map_query,
+                                                              address=address,
                                                               rating=custom_ratings[i],
                                                               review=custom_reviews[i],
                                                               user_locations=location,
