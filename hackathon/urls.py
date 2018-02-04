@@ -19,6 +19,7 @@ from review_system.api import MapResource
 from review_system.views import home
 from review_system.views import user_inputs
 from review_system.views import dashboard
+from review_system.views import place
 
 entry_resource = MapResource()
 
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', home),
     url(r'^dash/', dashboard),
+    url(r'^place/', place),
     url(r'^user/', user_inputs),
     url(r'^api/', include(entry_resource.urls)),
 ]
