@@ -59,26 +59,25 @@
     <br>
     <br>
     <br>
-      <div class="container row">
-          <div class="col-md-6">
-            <canvas id="pie-chart" width="800" height="450"></canvas>
-          </div>
-        <div class="col-md-6">
-          <center><h2>Recent reviews</h2></center>
-          <div class="list-group">
-            {% for ra, re in address_and_reviews %}
-            <div class="list-group-item">
-              <h4 class="list-group-item-heading">{{ re }}</h4>
-              <p class="list-group-item-text">{{ ra }}</p>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+              <canvas id="pie-chart" width="800" height="450"></canvas>
+              <canvas id="line-chart" width="800" height="450"></canvas>
             </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <canvas id="line-chart" width="800" height="450"></canvas>
+            <div class="col-md-6">
+              <center><h2>Recent reviews</h2></center>
+              <div class="list-group">
+                {% for ra, re in address_and_reviews %}
+                <div class="list-group-item">
+                  <h4 class="list-group-item-heading">{{ re }}</h4>
+                  <p class="list-group-item-text">{{ ra }}</p>
+                </div>
+                {% endfor %}
+              </div> 
+            </div>
         </div>
       </div>
-  </div>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
   <script>
