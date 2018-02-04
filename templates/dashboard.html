@@ -71,13 +71,36 @@
   </div>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
+      var array = [];
       $.ajax({
           type: 'GET',
           url: '/api/user/rating/',
           success: function (data) {
-              console.log(data);
+              //console.log(data);
+              var counter = data['data']
+              for (var key in counter){
+                array.push(counter[key])
+              }
           }
       });
+      console.log(array)
+      new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star"],
+      datasets: [{
+        label: "Ratings (Avg. Star)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: array
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Avg Ratings of Toilets in City'
+      }
+    }
+    });
   </script>
     </div>
 
