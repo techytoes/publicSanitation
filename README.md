@@ -5,6 +5,11 @@
 * #### create virtual environment and activate it. Then run this command in the root directory of the project.
 ``` pip install -r requirements.txt ```
 
+## Tech Stack Used
+
+* Django+Ajax+Jquery for Backend.
+* Bootstrap(HTML + CSS), ChartJS for illustrations for Frontend.
+* API used - GoogleMaps and Tastypie(Django.)
 
 # Screenshots
 
