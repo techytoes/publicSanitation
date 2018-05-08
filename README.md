@@ -1,4 +1,6 @@
-# Hackathon3.0
+# Public Sanitation
+
+> This Web-application was built as a part of a 24-hour Hackathon that was held in Feb 2018 at NIT Raipur.
 
 ## Installation Guide
 
