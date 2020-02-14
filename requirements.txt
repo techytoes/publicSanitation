@@ -1,6 +1,6 @@
 certifi==2018.1.18
 chardet==3.0.4
-Django==1.11.9
+Django==1.11.28
 django-tastypie==0.14.0
 googlemaps==2.5.1
 idna==2.6
